@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title%}все товары{% endblock %}
+
+{% block body %}
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+            <div class="form-control">
+                <h2>{{ el.title }}</h2><br>
+                <i>{{ el.info }}</i><br><br>
+                <b>{{ el.price }} $</b><br><br>
+                <div>
+                <button class="btn btn-outline-secondary"><a href="/buy/{{ el.id }}">купить товар</a></button>
+                <button class="btn btn-outline-secondary"><a href="/delete/{{ el.id }}">удалить</a></button>
+                </div>
+           </div><br><br>
+        {% endfor %}
+    {% else %}
+        <h2><i>здесь пока нет товаров</i></h2>
+    {% endif %}
+
+{% endblock %}
